@@ -1,4 +1,4 @@
-# Doin A Jig 
+# Doin A Jig
 
 ## To Do
 
@@ -7,20 +7,23 @@
 -   [ ] Add Presets to save configurations
 -   [ ] Add Color to text
 
+## Links
+
+[Dev Link](https://dev.dtywar1vprzdx.amplifyapp.com/)
 
 ## Vals Leather Stuff
 
 Artboard - 24in x 12in
 Leather Patches - 7 Wide x 15 Tall
-Individual 
+Individual
+
 -   Wide - 3 in (216pt)
 -   H - .75 in (54pt)
-Padding 
+    Padding
 -   Top - .4306" (31.0032pt)
 -   Left - .367" (26.424pt)
 
 1in = 72pt
-
 
 ## Feature Thoughts
 
