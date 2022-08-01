@@ -7,12 +7,14 @@ const TextConfiguration = ({
 	updateTextConfiguration,
 }) => {
 	const fontOptions = [
+		{ label: "Bender", value: "Bender" },
 		{ label: "Champagne Limousines", value: "ChampagneLimousines" },
-		{ label: "Monterey", value: "Monterey" },
 		{ label: "Edwardian Script", value: "EdwardianScript" },
-		{ label: "Perfetto", value: "Perfetto" },
-		{ label: "Monotype Corsiva", value: "MonotypeCorsiva" },
 		{ label: "Hello Honey", value: "HelloHoney" },
+		{ label: "Kaitlyn", value: "Kaitlyn" },
+		{ label: "Monotype Corsiva", value: "MonotypeCorsiva" },
+		{ label: "Monterey", value: "Monterey" },
+		{ label: "Perfetto", value: "Perfetto" },
 		{ label: "Southland", value: "Southland" },
 	];
 	let fontSizes = [];

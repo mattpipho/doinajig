@@ -9,8 +9,9 @@ const options = [
 	{ label: "Gold Rectangle", value: "gold-rectangle.png" },
 	{ label: "Grapes", value: "grapes.png" },
 	{ label: "Olive Branch", value: "olive_branch.png" },
-	{ label: "White Wine", value: "white-wine.png" },
+	{ label: "Oval", value: "oval.png" },
 	{ label: "Red Wine", value: "red-wine.png" },
+	{ label: "White Wine", value: "white-wine.png" },
 ];
 
 export default function ImageSelection({ setBackgroundImage }) {
