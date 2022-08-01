@@ -1,9 +1,8 @@
 import React from "react";
 
 import { Svg, Line } from "@react-pdf/renderer";
-import config from "../configurations/page.json";
 
-export default function CropMarks() {
+export default function CropMarks({ layoutConfig }) {
 	const addLeftMarginLines = (numberOfLines) => {
 		let lines = [];
 		for (let i = 0; i < numberOfLines; i++) {
@@ -11,9 +10,15 @@ export default function CropMarks() {
 				<Line
 					key={i}
 					x1={0}
-					x2={config.padding.left - 10}
-					y1={i * config.itemSize.height + config.padding.top}
-					y2={i * config.itemSize.height + config.padding.top}
+					x2={layoutConfig.padding.left - 10}
+					y1={
+						i * layoutConfig.itemSize.height +
+						layoutConfig.padding.top
+					}
+					y2={
+						i * layoutConfig.itemSize.height +
+						layoutConfig.padding.top
+					}
 					stroke={"black"}
 				/>
 			);
@@ -27,10 +32,24 @@ export default function CropMarks() {
 			let line = (
 				<Line
 					key={i + "b"}
-					x1={config.padding.left + i * config.itemSize.width}
-					x2={config.padding.left + i * config.itemSize.width}
-					y1={config.padding.top + config.itemSize.height * 5 + 20}
-					y2={config.padding.top + config.itemSize.height * 5 + 50}
+					x1={
+						layoutConfig.padding.left +
+						i * layoutConfig.itemSize.width
+					}
+					x2={
+						layoutConfig.padding.left +
+						i * layoutConfig.itemSize.width
+					}
+					y1={
+						layoutConfig.padding.top +
+						layoutConfig.itemSize.height * 5 +
+						20
+					}
+					y2={
+						layoutConfig.padding.top +
+						layoutConfig.itemSize.height * 5 +
+						50
+					}
 					stroke={"black"}
 				/>
 			);
@@ -40,7 +59,11 @@ export default function CropMarks() {
 	};
 
 	return (
-		<Svg height={config.padding.top + config.itemSize.height * 5 + 30}>
+		<Svg
+			height={
+				layoutConfig.padding.top + layoutConfig.itemSize.height * 5 + 30
+			}
+		>
 			{addLeftMarginLines(6)}
 			{addBottomMarginLines(3)}
 		</Svg>

@@ -13,8 +13,11 @@ import {
 } from "antd";
 import SingleCardRow from "./SingleCardRow";
 import Preview from "./Preview";
+import LayoutSelection from "./LayoutSelection";
 import ImageSelection from "./ImageSelection";
 import TextOptions from "./TextOptions";
+
+import { getLayout } from "../services/LayoutService";
 
 const { Header, Content } = Layout;
 const { TextArea } = Input;
@@ -61,6 +64,7 @@ function OrderDetails() {
 	const [isNameImportVisible, setNameImportVisible] = useState(false);
 	const [modalText, setModalText] = useState("");
 	const [fontSize, setFontSize] = useState(10);
+	const [layoutConfig, setLayout] = useState(getLayout());
 
 	useEffect(() => {
 		const nameArray = importedNames
@@ -155,6 +159,13 @@ function OrderDetails() {
 							<Panel header="Layout" key="0" showArrow={false}>
 								<Row>
 									<Col>
+										<LayoutSelection
+											setLayout={setLayout}
+										/>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
 										<Checkbox
 											onChange={(e) =>
 												setShowPlaceCardBorder(
@@ -236,6 +247,7 @@ function OrderDetails() {
 							showPlaceCardBorder={showPlaceCardBorder}
 							backgroundImage={backgroundImage}
 							textConfigurations={textConfigurations}
+							layoutConfig={layoutConfig}
 						/>
 					</Col>
 				</Row>

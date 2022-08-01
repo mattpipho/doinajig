@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import config from "../configurations/page.json";
 
 import { registerFonts } from "../services/FontService";
 
@@ -11,6 +10,7 @@ export default function PlaceCard({
 	showPlaceCardBorder,
 	backgroundImageName,
 	textConfigurations,
+	layoutConfig,
 }) {
 	const { name, table } = { ...data };
 	const [backgroundImage, setBackgroundImage] = useState();
@@ -55,15 +55,16 @@ export default function PlaceCard({
 			borderWidth: textConfigurations[type].borderWidth,
 		};
 	};
+
+	console.log("positionStyle", getPositionStyle("name"));
 	return (
 		<View
-			style={[
-				styles.placeCard,
-				{
-					borderWidth: showPlaceCardBorder ? 1 : 0,
-					borderColor: "green",
-				},
-			]}
+			style={{
+				width: layoutConfig.itemSize.width,
+				height: layoutConfig.itemSize.height,
+				borderWidth: showPlaceCardBorder ? 1 : 0,
+				borderColor: "green",
+			}}
 		>
 			{backgroundImage && (
 				<Image src={backgroundImage} style={styles.image} />
@@ -83,7 +84,7 @@ export default function PlaceCard({
 					{name?.replaceAll("^", "\n")}
 				</Text>
 			</View>
-			<View style={[styles.tableArea, getPositionStyle("table")]}>
+			{/* <View style={[styles.tableArea, getPositionStyle("table")]}>
 				<Text
 					style={[
 						styles.table,
@@ -97,15 +98,11 @@ export default function PlaceCard({
 				>
 					{table?.replaceAll("^", "\n")}
 				</Text>
-			</View>
+			</View> */}
 		</View>
 	);
 }
 const styles = StyleSheet.create({
-	placeCard: {
-		width: config.itemSize.width,
-		height: config.itemSize.height,
-	},
 	nameArea: {
 		justifyContent: "center",
 		position: "absolute",

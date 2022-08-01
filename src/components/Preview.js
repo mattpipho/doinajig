@@ -10,13 +10,12 @@ import {
 import CropMarks from "./CropMarks";
 import PlaceCard from "./PlaceCard";
 
-import config from "../configurations/page.json";
-
 export default function Preview({
 	data,
 	showPlaceCardBorder,
 	backgroundImage,
 	textConfigurations,
+	layoutConfig,
 }) {
 	const renderPlaceCards = (page) => {
 		let cards = [];
@@ -28,6 +27,7 @@ export default function Preview({
 					showPlaceCardBorder={showPlaceCardBorder}
 					backgroundImageName={backgroundImage}
 					textConfigurations={textConfigurations}
+					layoutConfig={layoutConfig}
 				/>
 			);
 		}
@@ -40,16 +40,22 @@ export default function Preview({
 			pages.push(
 				<Page
 					size={{
-						width: config.pageSize.width,
-						height: config.pageSize.height,
+						width: layoutConfig.pageSize.width,
+						height: layoutConfig.pageSize.height,
 					}}
 					style={styles.page}
 					wrap={false}
 					key={p}
 				>
-					<CropMarks />
+					<CropMarks layoutConfig={layoutConfig} />
 
-					<View style={styles.placecardsWrapper}>
+					<View
+						style={{
+							...styles.placecardsWrapper,
+							paddingTop: layoutConfig.padding.top,
+							paddingLeft: layoutConfig.padding.left,
+						}}
+					>
 						{renderPlaceCards(p)}
 					</View>
 				</Page>
@@ -60,6 +66,7 @@ export default function Preview({
 
 	return (
 		<div className="preview">
+			<div>Debug: {JSON.stringify(layoutConfig)}</div>
 			<PDFViewer width={"100%"} height={"100%"} showToolbar={true}>
 				<Document>{data.length > 0 && renderPages()}</Document>
 			</PDFViewer>
@@ -69,8 +76,6 @@ export default function Preview({
 
 const styles = StyleSheet.create({
 	placecardsWrapper: {
-		paddingTop: config.padding.top,
-		paddingLeft: config.padding.left,
 		position: "absolute",
 		flexDirection: "row",
 		flexWrap: "wrap",
