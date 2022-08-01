@@ -1,9 +1,30 @@
-# Corkey Place Card Generator
+# Doin A Jig 
 
 ## To Do
 
+-   [ ] Add Layout
+-   [ ] Store Fonts and Designs to S3 Bucket
 -   [ ] Add Presets to save configurations
 -   [ ] Add Color to text
+
+
+## Vals Leather Stuff
+
+Artboard - 24in x 12in
+Leather Patches - 7 Wide x 15 Tall
+Individual 
+-   Wide - 3 in (216pt)
+-   H - .75 in (54pt)
+Padding 
+-   Top - .4306" (31.0032pt)
+-   Left - .367" (26.424pt)
+
+1in = 72pt
+
+
+## Feature Thoughts
+
+The free version would not let you save layouts
 
 ## Adding a Font
 

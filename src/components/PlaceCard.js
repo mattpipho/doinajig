@@ -103,8 +103,8 @@ export default function PlaceCard({
 }
 const styles = StyleSheet.create({
 	placeCard: {
-		width: config.placeCardWidth,
-		height: config.placeCardHeight,
+		width: config.itemSize.width,
+		height: config.itemSize.height,
 	},
 	nameArea: {
 		justifyContent: "center",

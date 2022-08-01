@@ -7,7 +7,7 @@ import {
 	View,
 } from "@react-pdf/renderer";
 
-import AlignmentGuids from "./AlignmentGuides";
+import CropMarks from "./CropMarks";
 import PlaceCard from "./PlaceCard";
 
 import config from "../configurations/page.json";
@@ -38,8 +38,16 @@ export default function Preview({
 		let pages = [];
 		for (let p = 0; p <= Math.floor(data.length / 10); p++) {
 			pages.push(
-				<Page size="LETTER" style={styles.page} wrap={false} key={p}>
-					<AlignmentGuids />
+				<Page
+					size={{
+						width: config.pageSize.width,
+						height: config.pageSize.height,
+					}}
+					style={styles.page}
+					wrap={false}
+					key={p}
+				>
+					<CropMarks />
 
 					<View style={styles.placecardsWrapper}>
 						{renderPlaceCards(p)}
@@ -51,33 +59,18 @@ export default function Preview({
 	};
 
 	return (
-		<>
-			{/* <div>
-				<div>Debug:</div>
-				<div>Background Image: {backgroundImage}</div>
-				<div>
-					Text Configurations - Name:{" "}
-					{JSON.stringify(textConfigurations.name)}
-				</div>
-				<hr />
-				<div>
-					Text Configurations - Table:{" "}
-					{JSON.stringify(textConfigurations.table)}
-				</div>
-			</div> */}
-			<div className="preview">
-				<PDFViewer width={"100%"} height={"100%"} showToolbar={true}>
-					<Document>{data.length > 0 && renderPages()}</Document>
-				</PDFViewer>
-			</div>
-		</>
+		<div className="preview">
+			<PDFViewer width={"100%"} height={"100%"} showToolbar={true}>
+				<Document>{data.length > 0 && renderPages()}</Document>
+			</PDFViewer>
+		</div>
 	);
 }
 
 const styles = StyleSheet.create({
 	placecardsWrapper: {
-		marginTop: config.marginTop,
-		marginLeft: config.marginLeft,
+		paddingTop: config.padding.top,
+		paddingLeft: config.padding.left,
 		position: "absolute",
 		flexDirection: "row",
 		flexWrap: "wrap",

@@ -152,7 +152,7 @@ function OrderDetails() {
 						<Collapse accordion>
 							{/* <Divider plain>Order Number</Divider> */}
 							{/* <Input placeholder="Order Number" /> */}
-							<Panel header="General" key="0" showArrow={false}>
+							<Panel header="Layout" key="0" showArrow={false}>
 								<Row>
 									<Col>
 										<Checkbox

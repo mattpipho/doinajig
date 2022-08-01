@@ -3,7 +3,7 @@ import React from "react";
 import { Svg, Line } from "@react-pdf/renderer";
 import config from "../configurations/page.json";
 
-export default function AlignmentGuides() {
+export default function CropMarks() {
 	const addLeftMarginLines = (numberOfLines) => {
 		let lines = [];
 		for (let i = 0; i < numberOfLines; i++) {
@@ -11,9 +11,9 @@ export default function AlignmentGuides() {
 				<Line
 					key={i}
 					x1={0}
-					x2={config.marginLeft - 10}
-					y1={i * config.placeCardHeight + config.marginTop}
-					y2={i * config.placeCardHeight + config.marginTop}
+					x2={config.padding.left - 10}
+					y1={i * config.itemSize.height + config.padding.top}
+					y2={i * config.itemSize.height + config.padding.top}
 					stroke={"black"}
 				/>
 			);
@@ -27,10 +27,10 @@ export default function AlignmentGuides() {
 			let line = (
 				<Line
 					key={i + "b"}
-					x1={config.marginLeft + i * config.placeCardWidth}
-					x2={config.marginLeft + i * config.placeCardWidth}
-					y1={config.marginTop + config.placeCardHeight * 5 + 20}
-					y2={config.marginTop + config.placeCardHeight * 5 + 50}
+					x1={config.padding.left + i * config.itemSize.width}
+					x2={config.padding.left + i * config.itemSize.width}
+					y1={config.padding.top + config.itemSize.height * 5 + 20}
+					y2={config.padding.top + config.itemSize.height * 5 + 50}
 					stroke={"black"}
 				/>
 			);
@@ -40,7 +40,7 @@ export default function AlignmentGuides() {
 	};
 
 	return (
-		<Svg height={config.marginTop + config.placeCardHeight * 5 + 30}>
+		<Svg height={config.padding.top + config.itemSize.height * 5 + 30}>
 			{addLeftMarginLines(6)}
 			{addBottomMarginLines(3)}
 		</Svg>
