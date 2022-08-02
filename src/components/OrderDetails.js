@@ -4,18 +4,18 @@ import {
 	Divider,
 	Input,
 	Button,
-	List,
 	Row,
 	Col,
 	Modal,
 	Collapse,
 	Checkbox,
 } from "antd";
-import SingleCardRow from "./SingleCardRow";
+// import SingleCardRow from "./SingleCardRow";
 import Preview from "./Preview";
 import LayoutSelection from "./LayoutSelection";
 import ImageSelection from "./ImageSelection";
 import TextOptions from "./TextOptions";
+import DataTable from "./DataTable";
 
 const { Header, Content } = Layout;
 const { TextArea } = Input;
@@ -25,12 +25,11 @@ function OrderDetails() {
 	const [showPlaceCardBorder, setShowPlaceCardBorder] = useState(false);
 	const [backgroundImage, setBackgroundImage] = useState("blank.png");
 	const [textConfigurations, setTextConfigurations] = useState();
-	const [originalNames, setOriginalNames] = useState([]);
+	// const [originalNames, setOriginalNames] = useState([]);
 	const [importedNames, setImportedNames] = useState("");
 	const [formattedList, setFormattedList] = useState([]);
 	const [isNameImportVisible, setNameImportVisible] = useState(false);
 	const [modalText, setModalText] = useState("");
-	const [fontSize, setFontSize] = useState(10);
 	const [layoutConfig, setLayout] = useState();
 
 	useEffect(() => {
@@ -39,6 +38,7 @@ function OrderDetails() {
 			.map((line, index) => {
 				const [name, table, meal] = line.split("\t");
 				return {
+					key: index,
 					id: index,
 					name: name?.trim(),
 					table: table?.trim(),
@@ -47,7 +47,7 @@ function OrderDetails() {
 			})
 			.sort((a, b) => b.name.length - a.name.length);
 		setFormattedList(nameArray);
-		setOriginalNames(nameArray);
+		// setOriginalNames(nameArray);
 	}, [importedNames]);
 
 	useEffect(() => {
@@ -65,48 +65,15 @@ function OrderDetails() {
 		setNameImportVisible(false);
 	};
 
-	const replaceText = () => {
-		const newList = formattedList.map((item, index) => {
-			if (index === 3) {
-				return {
-					...item,
-					name: item.name.replace(" ", "*"),
-				};
-			} else {
-				return { ...item };
-			}
-		});
-		setFormattedList(newList);
-	};
+	// const updateSingleName = (id, name) => {
+	// 	//Use Splice to update
+	// 	const newList = formattedList.map((item) => {
+	// 		if (item.id === id) return { ...item, name };
+	// 		return item;
+	// 	});
 
-	const appendTable = () => {
-		const newList = formattedList.map((item) => {
-			return {
-				...item,
-				table: "Table " + item.table,
-			};
-		});
-		setFormattedList(newList);
-	};
-
-	const updateSingleName = (id, name) => {
-		//Use Splice to update
-		const newList = formattedList.map((item) => {
-			if (item.id === id) return { ...item, name };
-			return item;
-		});
-
-		setFormattedList(newList);
-	};
-	const resetNames = () => {
-		setFormattedList(originalNames);
-	};
-	const increaseFont = () => {
-		setFontSize(fontSize + 1);
-	};
-	const decreaseFont = () => {
-		setFontSize(fontSize - 1);
-	};
+	// 	setFormattedList(newList);
+	// };
 
 	const updateTextConfiguration = (type, configuration, value) => {
 		const typeConfigurations = {
@@ -132,7 +99,7 @@ function OrderDetails() {
 						<Collapse accordion>
 							{/* <Divider plain>Order Number</Divider> */}
 							{/* <Input placeholder="Order Number" /> */}
-							<Panel header="Layout" key="0" showArrow={false}>
+							<Panel header="Layout" key="0" showArrow={true}>
 								<Row>
 									<Col>
 										<LayoutSelection
@@ -141,41 +108,40 @@ function OrderDetails() {
 									</Col>
 								</Row>
 							</Panel>
-							<Panel
-								header="Guest List"
-								key="3"
-								showArrow={false}
-							>
-								<Button
-									onClick={() => setNameImportVisible(true)}
-								>
-									Import Names
-								</Button>
-								<Button onClick={replaceText}>Replace</Button>
-								<Button onClick={appendTable}>
-									Append Table
-								</Button>
-								<Button onClick={resetNames}>Reset</Button>
-								<Button onClick={increaseFont}>+</Button>
-								<Button onClick={decreaseFont}>-</Button>
-								<List
-									id={"textInputList"}
-									size="small"
-									bordered
-									dataSource={formattedList}
-									renderItem={(item) => (
-										<SingleCardRow
-											item={item}
-											updateSingleName={updateSingleName}
-										/>
-									)}
-								/>
-							</Panel>
+							{layoutConfig && (
+								<Panel header="Data" key="2" showArrow={true}>
+									<Button
+										onClick={() =>
+											setNameImportVisible(true)
+										}
+									>
+										Import Names
+									</Button>
+									<DataTable
+										layoutConfig={layoutConfig}
+										data={formattedList}
+									/>
+									{/* <List
+										id={"textInputList"}
+										size="small"
+										bordered
+										dataSource={formattedList}
+										renderItem={(item) => (
+											<SingleCardRow
+												item={item}
+												updateSingleName={
+													updateSingleName
+												}
+											/>
+										)}
+									/> */}
+								</Panel>
+							)}
 							{layoutConfig?.backgroundImage === "select" && (
 								<Panel
 									header="Background Selection"
-									key="1"
-									showArrow={false}
+									key="3"
+									showArrow={true}
 								>
 									<ImageSelection
 										setBackgroundImage={setBackgroundImage}
@@ -185,8 +151,8 @@ function OrderDetails() {
 							{layoutConfig?.textVariables && (
 								<Panel
 									header="Text Configuration"
-									key="2"
-									showArrow={false}
+									key="4"
+									showArrow={true}
 								>
 									<TextOptions
 										key={layoutConfig.textVariables}
@@ -212,7 +178,6 @@ function OrderDetails() {
 						)}
 						<Preview
 							data={formattedList}
-							fontSize={fontSize}
 							showPlaceCardBorder={showPlaceCardBorder}
 							backgroundImage={backgroundImage}
 							textConfigurations={textConfigurations}
