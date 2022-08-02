@@ -21,32 +21,6 @@ const { Header, Content } = Layout;
 const { TextArea } = Input;
 const { Panel } = Collapse;
 
-// const initialConfigurations = {
-// 	name: {
-// 		fontFamily: "ChampagneLimousines",
-// 		fontSize: 18,
-// 		fontColor: "Black",
-// 		xPosition: 127,
-// 		yPosition: 55,
-// 		textAlign: "center",
-// 		width: 250,
-// 		height: 75,
-// 		borderWidth: 0,
-// 	},
-// 	table: {
-// 		fontFamily: "ChampagneLimousines",
-// 		fontSize: 18,
-// 		fontColor: "Black",
-// 		xPosition: 127,
-// 		yPosition: 100,
-// 		textAlign: "center",
-// 		width: 100,
-// 		height: 50,
-// 		borderWidth: 0,
-// 	},
-// 	guestList: {},
-// };
-
 function OrderDetails() {
 	const [showPlaceCardBorder, setShowPlaceCardBorder] = useState(false);
 	const [backgroundImage, setBackgroundImage] = useState("blank.png");
@@ -166,20 +140,6 @@ function OrderDetails() {
 										/>
 									</Col>
 								</Row>
-								<Row>
-									<Col>
-										<Checkbox
-											onChange={(e) =>
-												setShowPlaceCardBorder(
-													e.target.checked
-												)
-											}
-										>
-											{" "}
-											Show Place Card Border{" "}
-										</Checkbox>
-									</Col>
-								</Row>
 							</Panel>
 							<Panel
 								header="Guest List"
@@ -241,6 +201,15 @@ function OrderDetails() {
 					</Col>
 					<Col span={14}>
 						<Divider plain>Preview</Divider>
+						{layoutConfig && (
+							<Checkbox
+								onChange={(e) =>
+									setShowPlaceCardBorder(e.target.checked)
+								}
+							>
+								Show Place Card Border
+							</Checkbox>
+						)}
 						<Preview
 							data={formattedList}
 							fontSize={fontSize}

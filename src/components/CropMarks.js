@@ -1,11 +1,19 @@
 import React from "react";
-
 import { Svg, Line } from "@react-pdf/renderer";
 
 export default function CropMarks({ layoutConfig }) {
+	const verticalItems = Math.floor(
+		(layoutConfig.pageSize.height - layoutConfig.padding.top) /
+			layoutConfig.itemSize.height
+	);
+	const horizontalItems = Math.floor(
+		(layoutConfig.pageSize.width - layoutConfig.padding.left) /
+			layoutConfig.itemSize.width
+	);
+
 	const addLeftMarginLines = (numberOfLines) => {
 		let lines = [];
-		for (let i = 0; i < numberOfLines; i++) {
+		for (let i = 0; i <= numberOfLines; i++) {
 			let line = (
 				<Line
 					key={i}
@@ -28,7 +36,7 @@ export default function CropMarks({ layoutConfig }) {
 	};
 	const addBottomMarginLines = (numberOfLines) => {
 		let lines = [];
-		for (let i = 0; i < numberOfLines; i++) {
+		for (let i = 0; i <= numberOfLines; i++) {
 			let line = (
 				<Line
 					key={i + "b"}
@@ -42,12 +50,12 @@ export default function CropMarks({ layoutConfig }) {
 					}
 					y1={
 						layoutConfig.padding.top +
-						layoutConfig.itemSize.height * 5 +
+						layoutConfig.itemSize.height * verticalItems +
 						20
 					}
 					y2={
 						layoutConfig.padding.top +
-						layoutConfig.itemSize.height * 5 +
+						layoutConfig.itemSize.height * verticalItems +
 						50
 					}
 					stroke={"black"}
@@ -59,13 +67,9 @@ export default function CropMarks({ layoutConfig }) {
 	};
 
 	return (
-		<Svg
-			height={
-				layoutConfig.padding.top + layoutConfig.itemSize.height * 5 + 30
-			}
-		>
-			{addLeftMarginLines(6)}
-			{addBottomMarginLines(3)}
+		<Svg height={layoutConfig.pageSize.height}>
+			{addLeftMarginLines(verticalItems)}
+			{addBottomMarginLines(horizontalItems)}
 		</Svg>
 	);
 }
