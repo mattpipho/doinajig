@@ -9,6 +9,7 @@ import {
 
 import CropMarks from "./CropMarks";
 import PlaceCard from "./PlaceCard";
+import { getNumberOfItemsPerPage } from "../services/LayoutService";
 
 export default function Preview({
 	data,
@@ -19,9 +20,15 @@ export default function Preview({
 }) {
 	if (!layoutConfig) return <div>No Layout Selected</div>;
 
+	const itemsPerPage = getNumberOfItemsPerPage(layoutConfig).total;
+
 	const renderPlaceCards = (page) => {
 		let cards = [];
-		for (let i = page * 10; i < page * 10 + 10; i++) {
+		for (
+			let i = page * itemsPerPage;
+			i < page * itemsPerPage + itemsPerPage;
+			i++
+		) {
 			cards.push(
 				<PlaceCard
 					key={i}
@@ -38,7 +45,7 @@ export default function Preview({
 
 	const renderPages = () => {
 		let pages = [];
-		for (let p = 0; p <= Math.floor(data.length / 10); p++) {
+		for (let p = 0; p <= Math.floor(data.length / itemsPerPage); p++) {
 			pages.push(
 				<Page
 					size={{
