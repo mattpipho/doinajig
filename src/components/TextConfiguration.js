@@ -55,7 +55,7 @@ const TextConfiguration = ({
 				<Col span="10">Font Family</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].fontFamily}
+						defaultValue={defaultValues.fontFamily}
 						style={{ width: 200 }}
 						options={fontOptions}
 						onChange={handleConfigurationChange("fontFamily")}
@@ -66,7 +66,7 @@ const TextConfiguration = ({
 				<Col span="10">Font Size</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].fontSize}
+						defaultValue={defaultValues.fontSize}
 						style={{ width: 100 }}
 						options={fontSizes}
 						onChange={handleConfigurationChange("fontSize")}
@@ -77,7 +77,7 @@ const TextConfiguration = ({
 				<Col span="10">Alignment</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].textAlign}
+						defaultValue={defaultValues.textAlign}
 						style={{ width: 100 }}
 						options={alignmentOptions}
 						onChange={handleConfigurationChange("textAlign")}
@@ -88,7 +88,7 @@ const TextConfiguration = ({
 				<Col span="10">Width</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].width}
+						defaultValue={defaultValues.width}
 						style={{ width: 100 }}
 						options={widthOptions}
 						onChange={handleConfigurationChange("width")}
@@ -99,7 +99,7 @@ const TextConfiguration = ({
 				<Col span="10">Height</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].height}
+						defaultValue={defaultValues.height}
 						style={{ width: 100 }}
 						options={heightOptions}
 						onChange={handleConfigurationChange("height")}
@@ -110,7 +110,7 @@ const TextConfiguration = ({
 				<Col span="10">X Position</Col>
 				<Col span="14">
 					<Input
-						defaultValue={defaultValues[type].xPosition}
+						defaultValue={defaultValues.xPosition}
 						style={{ width: 100, textAlign: "center" }}
 						onChange={handleInputChange("xPosition")}
 					/>
@@ -120,7 +120,7 @@ const TextConfiguration = ({
 				<Col span="10">Y Position</Col>
 				<Col span="14">
 					<Input
-						defaultValue={defaultValues[type].yPosition}
+						defaultValue={defaultValues.yPosition}
 						style={{ width: 100, textAlign: "center" }}
 						onChange={handleInputChange("yPosition")}
 					/>
@@ -130,7 +130,7 @@ const TextConfiguration = ({
 				<Col span="10">Show Border</Col>
 				<Col span="14">
 					<Select
-						defaultValue={defaultValues[type].borderOptions}
+						defaultValue={defaultValues.borderOptions}
 						style={{ width: 100 }}
 						options={borderOptions}
 						onChange={handleConfigurationChange("borderWidth")}

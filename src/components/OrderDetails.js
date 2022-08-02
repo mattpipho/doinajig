@@ -17,71 +17,73 @@ import LayoutSelection from "./LayoutSelection";
 import ImageSelection from "./ImageSelection";
 import TextOptions from "./TextOptions";
 
-import { getLayout } from "../services/LayoutService";
-
 const { Header, Content } = Layout;
 const { TextArea } = Input;
 const { Panel } = Collapse;
 
-const initialConfigurations = {
-	name: {
-		fontFamily: "ChampagneLimousines",
-		fontSize: 18,
-		fontColor: "Black",
-		xPosition: 127,
-		yPosition: 55,
-		textAlign: "center",
-		width: 250,
-		height: 75,
-		borderWidth: 0,
-	},
-	table: {
-		fontFamily: "ChampagneLimousines",
-		fontSize: 18,
-		fontColor: "Black",
-		xPosition: 127,
-		yPosition: 100,
-		textAlign: "center",
-		width: 100,
-		height: 50,
-		borderWidth: 0,
-	},
-	guestList: {},
-};
+// const initialConfigurations = {
+// 	name: {
+// 		fontFamily: "ChampagneLimousines",
+// 		fontSize: 18,
+// 		fontColor: "Black",
+// 		xPosition: 127,
+// 		yPosition: 55,
+// 		textAlign: "center",
+// 		width: 250,
+// 		height: 75,
+// 		borderWidth: 0,
+// 	},
+// 	table: {
+// 		fontFamily: "ChampagneLimousines",
+// 		fontSize: 18,
+// 		fontColor: "Black",
+// 		xPosition: 127,
+// 		yPosition: 100,
+// 		textAlign: "center",
+// 		width: 100,
+// 		height: 50,
+// 		borderWidth: 0,
+// 	},
+// 	guestList: {},
+// };
 
 function OrderDetails() {
-	const [placeCardConfigs, setPlaceCardConfigs] = useState(
-		initialConfigurations
-	);
 	const [showPlaceCardBorder, setShowPlaceCardBorder] = useState(false);
 	const [backgroundImage, setBackgroundImage] = useState("blank.png");
-	const [textConfigurations, setTextConfigurations] = useState(
-		initialConfigurations
-	);
+	const [textConfigurations, setTextConfigurations] = useState();
 	const [originalNames, setOriginalNames] = useState([]);
 	const [importedNames, setImportedNames] = useState("");
 	const [formattedList, setFormattedList] = useState([]);
 	const [isNameImportVisible, setNameImportVisible] = useState(false);
 	const [modalText, setModalText] = useState("");
 	const [fontSize, setFontSize] = useState(10);
-	const [layoutConfig, setLayout] = useState(getLayout());
+	const [layoutConfig, setLayout] = useState();
 
 	useEffect(() => {
 		const nameArray = importedNames
 			.split("\n")
 			.map((line, index) => {
-				const [name, table, mealChoice] = line.split("\t");
+				const [name, table, meal] = line.split("\t");
 				return {
 					id: index,
 					name: name?.trim(),
 					table: table?.trim(),
-					mealChoice: mealChoice?.trim(),
+					meal: meal?.trim(),
 				};
 			})
 			.sort((a, b) => b.name.length - a.name.length);
 		setFormattedList(nameArray);
 		setOriginalNames(nameArray);
 	}, [importedNames]);
+
+	useEffect(() => {
+		let textConfigs = {};
+
+		layoutConfig?.textVariables.forEach((textVariable) => {
+			textConfigs[textVariable.name] = { ...textVariable };
+		});
+		setTextConfigurations(textConfigs);
+	}, [layoutConfig]);
 
 	const formatNames = () => {
 		setImportedNames(modalText);
@@ -152,7 +154,7 @@ function OrderDetails() {
 			<Content>
 				<h1>Order Details</h1>
 				<Row gutter={16}>
-					<Col offset={1} span={7}>
+					<Col offset={1} span={6}>
 						<Collapse accordion>
 							{/* <Divider plain>Order Number</Divider> */}
 							{/* <Input placeholder="Order Number" /> */}
@@ -178,33 +180,6 @@ function OrderDetails() {
 										</Checkbox>
 									</Col>
 								</Row>
-							</Panel>
-							<Panel
-								header="Background Selection"
-								key="1"
-								showArrow={false}
-							>
-								<ImageSelection
-									setBackgroundImage={setBackgroundImage}
-								/>
-							</Panel>
-							<Panel
-								header="Text Configuration"
-								key="2"
-								showArrow={false}
-							>
-								<TextOptions
-									key={placeCardConfigs}
-									placeCardConfigs={placeCardConfigs}
-									nameFontSizeConfig={
-										placeCardConfigs.name.fontSize
-									}
-									setPlaceCardConfigs={setPlaceCardConfigs}
-									defaultValues={initialConfigurations}
-									updateTextConfiguration={
-										updateTextConfiguration
-									}
-								/>
 							</Panel>
 							<Panel
 								header="Guest List"
@@ -236,6 +211,32 @@ function OrderDetails() {
 									)}
 								/>
 							</Panel>
+							{layoutConfig?.backgroundImage === "select" && (
+								<Panel
+									header="Background Selection"
+									key="1"
+									showArrow={false}
+								>
+									<ImageSelection
+										setBackgroundImage={setBackgroundImage}
+									/>
+								</Panel>
+							)}
+							{layoutConfig?.textVariables && (
+								<Panel
+									header="Text Configuration"
+									key="2"
+									showArrow={false}
+								>
+									<TextOptions
+										key={layoutConfig.textVariables}
+										updateTextConfiguration={
+											updateTextConfiguration
+										}
+										layoutConfig={layoutConfig}
+									/>
+								</Panel>
+							)}
 						</Collapse>
 					</Col>
 					<Col span={14}>
@@ -243,7 +244,6 @@ function OrderDetails() {
 						<Preview
 							data={formattedList}
 							fontSize={fontSize}
-							config={placeCardConfigs}
 							showPlaceCardBorder={showPlaceCardBorder}
 							backgroundImage={backgroundImage}
 							textConfigurations={textConfigurations}

@@ -3,8 +3,6 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 
 import { registerFonts } from "../services/FontService";
 
-//import { useMainContext } from "../context/mainContext";
-
 export default function PlaceCard({
 	data,
 	showPlaceCardBorder,
@@ -12,7 +10,6 @@ export default function PlaceCard({
 	textConfigurations,
 	layoutConfig,
 }) {
-	const { name, table } = { ...data };
 	const [backgroundImage, setBackgroundImage] = useState();
 
 	registerFonts();
@@ -56,7 +53,6 @@ export default function PlaceCard({
 		};
 	};
 
-	console.log("positionStyle", getPositionStyle("name"));
 	return (
 		<View
 			style={{
@@ -69,10 +65,46 @@ export default function PlaceCard({
 			{backgroundImage && (
 				<Image src={backgroundImage} style={styles.image} />
 			)}
-			<View style={[styles.nameArea, getPositionStyle("name")]}>
+
+			{layoutConfig?.textVariables.map((textVariable) => {
+				const textValue = data ? data[textVariable.name] : "";
+
+				return (
+					textConfigurations[textVariable.name] && (
+						<View
+							key={textVariable.name}
+							style={[
+								styles.textArea,
+								getPositionStyle(textVariable.name),
+							]}
+						>
+							<Text
+								style={[
+									{
+										fontFamily:
+											textConfigurations.name.fontFamily,
+										fontSize:
+											textConfigurations.name.fontSize,
+										color: textConfigurations.name.color,
+										textAlign:
+											textConfigurations.name.textAlign,
+										width: "100%",
+										lineHeight: "1",
+										borderColor: "blue",
+									},
+								]}
+							>
+								{textValue?.replaceAll("^", "\n")}
+							</Text>
+						</View>
+					)
+				);
+			})}
+
+			{/* <View style={[styles.nameArea, getPositionStyle("name")]}>
 				<Text
 					style={[
-						styles.name,
+						//styles.name,
 						{
 							fontFamily: textConfigurations.name.fontFamily,
 							fontSize: textConfigurations.name.fontSize,
@@ -84,10 +116,10 @@ export default function PlaceCard({
 					{name?.replaceAll("^", "\n")}
 				</Text>
 			</View>
-			{/* <View style={[styles.tableArea, getPositionStyle("table")]}>
+			<View style={[styles.tableArea, getPositionStyle("table")]}>
 				<Text
 					style={[
-						styles.table,
+						//styles.table,
 						{
 							fontFamily: textConfigurations.table.fontFamily,
 							fontSize: textConfigurations.table.fontSize,
@@ -103,6 +135,11 @@ export default function PlaceCard({
 	);
 }
 const styles = StyleSheet.create({
+	textArea: {
+		justifyContent: "center",
+		position: "absolute",
+		borderColor: "red",
+	},
 	nameArea: {
 		justifyContent: "center",
 		position: "absolute",

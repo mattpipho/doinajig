@@ -10,5 +10,19 @@
 	"itemSize": {
 		"width": 216,
 		"height": 54
-	}
+	},
+	"textVariables": [
+		{
+			"name": "name",
+			"fontFamily": "ChampagneLimousines",
+			"fontSize": 14,
+			"fontColor": "Black",
+			"xPosition": 108,
+			"yPosition": 20,
+			"textAlign": "right",
+			"width": 200,
+			"height": 20,
+			"borderWidth": 0
+		}
+	]
 }

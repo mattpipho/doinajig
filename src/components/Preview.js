@@ -17,6 +17,8 @@ export default function Preview({
 	textConfigurations,
 	layoutConfig,
 }) {
+	if (!layoutConfig) return <div>No Layout Selected</div>;
+
 	const renderPlaceCards = (page) => {
 		let cards = [];
 		for (let i = page * 10; i < page * 10 + 10; i++) {
@@ -66,7 +68,7 @@ export default function Preview({
 
 	return (
 		<div className="preview">
-			<div>Debug: {JSON.stringify(layoutConfig)}</div>
+			{/* <div>DEBUG: {JSON.stringify(textConfigurations)}</div> */}
 			<PDFViewer width={"100%"} height={"100%"} showToolbar={true}>
 				<Document>{data.length > 0 && renderPages()}</Document>
 			</PDFViewer>

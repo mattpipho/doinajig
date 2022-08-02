@@ -12,12 +12,12 @@ export default function LayoutSelection({ setLayout }) {
 	return (
 		<div>
 			<Row>
-				<Col>
+				<Col span={10}>
 					<div>Layout</div>
 				</Col>
-				<Col>
+				<Col span={14}>
 					<Select
-						defaultValue="placecards"
+						defaultValue=""
 						style={{ width: 200 }}
 						onChange={(value) => setLayout(getLayout(value))}
 						options={options}
