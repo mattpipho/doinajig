@@ -82,12 +82,21 @@ export default function PlaceCard({
 								style={[
 									{
 										fontFamily:
-											textConfigurations.name.fontFamily,
+											textConfigurations[
+												textVariable.name
+											].fontFamily,
 										fontSize:
-											textConfigurations.name.fontSize,
-										color: textConfigurations.name.color,
+											textConfigurations[
+												textVariable.name
+											].fontSize,
+										color:
+											textConfigurations[
+												textVariable.name
+											].color,
 										textAlign:
-											textConfigurations.name.textAlign,
+											textConfigurations[
+												textVariable.name
+											].textAlign,
 										width: "100%",
 										lineHeight: "1",
 										borderColor: "blue",

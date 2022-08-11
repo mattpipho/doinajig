@@ -1,5 +1,6 @@
 import { Font } from "@react-pdf/renderer";
 
+import Apashy from "../fonts/Apashy.ttf";
 import Bender from "../fonts/Bender.ttf";
 import Champagne from "../fonts/ChampagneLimousines.ttf";
 import EdwardianScript from "../fonts/EdwardianScript.ttf";
@@ -11,6 +12,10 @@ import Perfetto from "../fonts/Perfetto.ttf";
 import Southland from "../fonts/Southland.ttf";
 
 export const registerFonts = () => {
+	Font.register({
+		family: "Apashy",
+		src: Apashy,
+	});
 	Font.register({
 		family: "Bender",
 		src: Bender,

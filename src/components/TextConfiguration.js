@@ -7,6 +7,7 @@ const TextConfiguration = ({
 	updateTextConfiguration,
 }) => {
 	const fontOptions = [
+		{ label: "Apashy", value: "Apashy" },
 		{ label: "Bender", value: "Bender" },
 		{ label: "Champagne Limousines", value: "ChampagneLimousines" },
 		{ label: "Edwardian Script", value: "EdwardianScript" },
