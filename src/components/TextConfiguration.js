@@ -17,6 +17,7 @@ const TextConfiguration = ({
 		{ label: "Monterey", value: "Monterey" },
 		{ label: "Perfetto", value: "Perfetto" },
 		{ label: "Southland", value: "Southland" },
+		{ label: "Trajan Pro", value: "TrajanPro" },
 	];
 	let fontSizes = [];
 	for (let i = 10; i < 73; i++) {

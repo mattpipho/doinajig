@@ -10,6 +10,7 @@ import MonotypeCorsiva from "../fonts/MonotypeCorsiva.ttf";
 import Monterey from "../fonts/Monterey.ttf";
 import Perfetto from "../fonts/Perfetto.ttf";
 import Southland from "../fonts/Southland.ttf";
+import TrajanPro from "../fonts/TrajanProRegular.ttf";
 
 export const registerFonts = () => {
 	Font.register({
@@ -51,5 +52,9 @@ export const registerFonts = () => {
 	Font.register({
 		family: "Southland",
 		src: Southland,
+	});
+	Font.register({
+		family: "TrajanPro",
+		src: TrajanPro,
 	});
 };
