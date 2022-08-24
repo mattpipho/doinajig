@@ -11,6 +11,7 @@ const TextConfiguration = ({
 		{ label: "Bender", value: "Bender" },
 		{ label: "Champagne Limousines", value: "ChampagneLimousines" },
 		{ label: "Edwardian Script", value: "EdwardianScript" },
+		{ label: "Great Vibes", value: "GreatVibes" },
 		{ label: "Hello Honey", value: "HelloHoney" },
 		{ label: "Kaitlyn", value: "Kaitlyn" },
 		{ label: "Monotype Corsiva", value: "MonotypeCorsiva" },

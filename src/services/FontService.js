@@ -4,6 +4,7 @@ import Apashy from "../fonts/Apashy.ttf";
 import Bender from "../fonts/Bender.ttf";
 import Champagne from "../fonts/ChampagneLimousines.ttf";
 import EdwardianScript from "../fonts/EdwardianScript.ttf";
+import GreatVibes from "../fonts/GreatVibes.ttf";
 import HelloHoney from "../fonts/HelloHoney.otf";
 import Kaitlyn from "../fonts/Kaitlyn.ttf";
 import MonotypeCorsiva from "../fonts/MonotypeCorsiva.ttf";
@@ -28,6 +29,10 @@ export const registerFonts = () => {
 	Font.register({
 		family: "EdwardianScript",
 		src: EdwardianScript,
+	});
+	Font.register({
+		family: "GreatVibes",
+		src: GreatVibes,
 	});
 	Font.register({
 		family: "HelloHoney",
