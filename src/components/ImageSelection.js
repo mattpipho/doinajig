@@ -11,6 +11,8 @@ const options = [
 	{ label: "Olive Branch", value: "olive_branch.png" },
 	{ label: "Oval", value: "oval.png" },
 	{ label: "Red Wine", value: "red-wine.png" },
+	{ label: "Swirl Bottle and Glass", value: "swirl-bottle-and-glass.png" },
+	{ label: "Swirl Heart", value: "swirl-heart.png" },
 	{ label: "White Wine", value: "white-wine.png" },
 ];
 
