@@ -89,10 +89,9 @@ export default function PlaceCard({
 											textConfigurations[
 												textVariable.name
 											].fontSize,
-										color:
-											textConfigurations[
-												textVariable.name
-											].color,
+										color: textConfigurations[
+											textVariable.name
+										].color,
 										textAlign:
 											textConfigurations[
 												textVariable.name

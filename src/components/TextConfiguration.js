@@ -18,6 +18,8 @@ const TextConfiguration = ({
 		{ label: "Monterey", value: "Monterey" },
 		{ label: "Perfetto", value: "Perfetto" },
 		{ label: "Southland", value: "Southland" },
+		{ label: "StrongFarmhouse", value: "StrongFarmhouse" },
+		{ label: "Times", value: "Times" },
 		{ label: "Trajan Pro", value: "TrajanPro" },
 	];
 	let fontSizes = [];

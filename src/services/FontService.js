@@ -11,6 +11,8 @@ import MonotypeCorsiva from "../fonts/MonotypeCorsiva.ttf";
 import Monterey from "../fonts/Monterey.ttf";
 import Perfetto from "../fonts/Perfetto.ttf";
 import Southland from "../fonts/Southland.ttf";
+import StrongFarmhouse from '../fonts/StrongFarmhouse.ttf';
+import Times from "../fonts/times.ttf";
 import TrajanPro from "../fonts/TrajanProRegular.ttf";
 
 export const registerFonts = () => {
@@ -59,7 +61,15 @@ export const registerFonts = () => {
 		src: Southland,
 	});
 	Font.register({
+		family: "StrongFarmhouse",
+		src: StrongFarmhouse,
+	});
+	Font.register({
 		family: "TrajanPro",
 		src: TrajanPro,
+	});
+	Font.register({
+		family: "Times",
+		src: Times,
 	});
 };
