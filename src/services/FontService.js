@@ -1,9 +1,11 @@
 import { Font } from "@react-pdf/renderer";
 
+import Alexandria from "../fonts/Alexandria.ttf";
 import Apashy from "../fonts/Apashy.ttf";
 import Bender from "../fonts/Bender.ttf";
 import Champagne from "../fonts/ChampagneLimousines.ttf";
 import EdwardianScript from "../fonts/EdwardianScript.ttf";
+import FreestyleScript from "../fonts/FreestyleScript.ttf";
 import GreatVibes from "../fonts/GreatVibes.ttf";
 import HelloHoney from "../fonts/HelloHoney.otf";
 import Kaitlyn from "../fonts/Kaitlyn.ttf";
@@ -11,11 +13,15 @@ import MonotypeCorsiva from "../fonts/MonotypeCorsiva.ttf";
 import Monterey from "../fonts/Monterey.ttf";
 import Perfetto from "../fonts/Perfetto.ttf";
 import Southland from "../fonts/Southland.ttf";
-import StrongFarmhouse from '../fonts/StrongFarmhouse.ttf';
+import StrongFarmhouse from "../fonts/StrongFarmhouse.ttf";
 import Times from "../fonts/times.ttf";
 import TrajanPro from "../fonts/TrajanProRegular.ttf";
 
 export const registerFonts = () => {
+	Font.register({
+		family: "Alexandria",
+		src: Alexandria,
+	});
 	Font.register({
 		family: "Apashy",
 		src: Apashy,
@@ -31,6 +37,10 @@ export const registerFonts = () => {
 	Font.register({
 		family: "EdwardianScript",
 		src: EdwardianScript,
+	});
+	Font.register({
+		family: "FreestyleScript",
+		src: FreestyleScript,
 	});
 	Font.register({
 		family: "GreatVibes",
