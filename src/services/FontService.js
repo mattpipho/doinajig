@@ -3,6 +3,7 @@ import { Font } from "@react-pdf/renderer";
 import Alexandria from "../fonts/Alexandria.ttf";
 import Apashy from "../fonts/Apashy.ttf";
 import Bender from "../fonts/Bender.ttf";
+import BickhamScript from "../fonts/BickhamScript.otf";
 import Champagne from "../fonts/ChampagneLimousines.ttf";
 import EdwardianScript from "../fonts/EdwardianScript.ttf";
 import FreestyleScript from "../fonts/FreestyleScript.ttf";
@@ -29,6 +30,10 @@ export const registerFonts = () => {
 	Font.register({
 		family: "Bender",
 		src: Bender,
+	});
+	Font.register({
+		family: "BickhamScript",
+		src: BickhamScript,
 	});
 	Font.register({
 		family: "ChampagneLimousines",

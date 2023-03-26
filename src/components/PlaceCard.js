@@ -97,7 +97,7 @@ export default function PlaceCard({
 												textVariable.name
 											].textAlign,
 										width: "100%",
-										lineHeight: "1",
+										lineHeight: ".6",
 										borderColor: "blue",
 									},
 								]}

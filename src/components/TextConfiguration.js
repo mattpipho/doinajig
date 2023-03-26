@@ -10,6 +10,7 @@ const TextConfiguration = ({
 		{ label: "Alexandria", value: "Alexandria" },
 		{ label: "Apashy", value: "Apashy" },
 		{ label: "Bender", value: "Bender" },
+		{ label: "Bickham Script", value: "BickhamScript" },
 		{ label: "Champagne Limousines", value: "ChampagneLimousines" },
 		{ label: "Edwardian Script", value: "EdwardianScript" },
 		{ label: "Freestyle Script", value: "FreestyleScript" },
