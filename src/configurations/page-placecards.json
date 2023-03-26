@@ -1,0 +1,41 @@
+{
+	"pageSize": {
+		"width": 612,
+		"height": 792
+	},
+	"padding": {
+		"top": 30,
+		"left": 50
+	},
+	"itemSize": {
+		"width": 255,
+		"height": 145
+	},
+	"backgroundImage": "select",
+	"textVariables": [
+		{
+			"name": "name",
+			"fontFamily": "ChampagneLimousines",
+			"fontSize": 18,
+			"fontColor": "Black",
+			"xPosition": 127,
+			"yPosition": 55,
+			"textAlign": "center",
+			"width": 250,
+			"height": 75,
+			"borderWidth": 0
+		},
+		{
+			"name": "table",
+			"fontFamily": "ChampagneLimousines",
+			"fontSize": 18,
+			"fontColor": "Black",
+			"xPosition": 127,
+			"yPosition": 100,
+			"textAlign": "center",
+			"width": 100,
+			"height": 50,
+			"borderWidth": 0
+		}
+	]
+}

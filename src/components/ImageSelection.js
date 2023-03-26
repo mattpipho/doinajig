@@ -7,10 +7,15 @@ const options = [
 	{ label: "Brackets 2", value: "brackets2.png" },
 	{ label: "Circle", value: "circle.png" },
 	{ label: "Gold Rectangle", value: "gold-rectangle.png" },
+	{ label: "Golf", value: "golf.png" },
 	{ label: "Grapes", value: "grapes.png" },
+	{ label: "Pink Brush Stroke", value: "pink-brush-stroke.png" },
 	{ label: "Olive Branch", value: "olive_branch.png" },
-	{ label: "White Wine", value: "white-wine.png" },
+	{ label: "Oval", value: "oval.png" },
 	{ label: "Red Wine", value: "red-wine.png" },
+	{ label: "Swirl Bottle and Glass", value: "swirl-bottle-and-glass.png" },
+	{ label: "Swirl Heart", value: "swirl-heart.png" },
+	{ label: "White Wine", value: "white-wine.png" },
 ];
 
 export default function ImageSelection({ setBackgroundImage }) {

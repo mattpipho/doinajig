@@ -1,6 +1,14 @@
 {
-    "marginTop": 30,
-    "marginLeft": 50,
-    "placeCardWidth": 255,
-    "placeCardHeight": 145
+	"pageSize": {
+		"width": 612,
+		"height": 792
+	},
+	"padding": {
+		"top": 30,
+		"left": 50
+	},
+	"itemSize": {
+		"width": 255,
+		"height": 145
+	}
 }

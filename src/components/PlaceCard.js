@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import config from "../configurations/page.json";
 
 import { registerFonts } from "../services/FontService";
-
-//import { useMainContext } from "../context/mainContext";
 
 export default function PlaceCard({
 	data,
 	showPlaceCardBorder,
 	backgroundImageName,
 	textConfigurations,
+	layoutConfig,
 }) {
-	const { name, table } = { ...data };
 	const [backgroundImage, setBackgroundImage] = useState();
 
 	registerFonts();
@@ -55,23 +52,67 @@ export default function PlaceCard({
 			borderWidth: textConfigurations[type].borderWidth,
 		};
 	};
+
 	return (
 		<View
-			style={[
-				styles.placeCard,
-				{
-					borderWidth: showPlaceCardBorder ? 1 : 0,
-					borderColor: "green",
-				},
-			]}
+			style={{
+				width: layoutConfig.itemSize.width,
+				height: layoutConfig.itemSize.height,
+				borderWidth: showPlaceCardBorder ? 1 : 0,
+				borderColor: "green",
+			}}
 		>
 			{backgroundImage && (
 				<Image src={backgroundImage} style={styles.image} />
 			)}
-			<View style={[styles.nameArea, getPositionStyle("name")]}>
+
+			{layoutConfig?.textVariables.map((textVariable) => {
+				const textValue = data ? data[textVariable.name] : "";
+
+				return (
+					textConfigurations[textVariable.name] && (
+						<View
+							key={textVariable.name}
+							style={[
+								styles.textArea,
+								getPositionStyle(textVariable.name),
+							]}
+						>
+							<Text
+								style={[
+									{
+										fontFamily:
+											textConfigurations[
+												textVariable.name
+											].fontFamily,
+										fontSize:
+											textConfigurations[
+												textVariable.name
+											].fontSize,
+										color: textConfigurations[
+											textVariable.name
+										].color,
+										textAlign:
+											textConfigurations[
+												textVariable.name
+											].textAlign,
+										width: "100%",
+										lineHeight: ".6",
+										borderColor: "blue",
+									},
+								]}
+							>
+								{textValue?.replaceAll("^", "\n")}
+							</Text>
+						</View>
+					)
+				);
+			})}
+
+			{/* <View style={[styles.nameArea, getPositionStyle("name")]}>
 				<Text
 					style={[
-						styles.name,
+						//styles.name,
 						{
 							fontFamily: textConfigurations.name.fontFamily,
 							fontSize: textConfigurations.name.fontSize,
@@ -86,7 +127,7 @@ export default function PlaceCard({
 			<View style={[styles.tableArea, getPositionStyle("table")]}>
 				<Text
 					style={[
-						styles.table,
+						//styles.table,
 						{
 							fontFamily: textConfigurations.table.fontFamily,
 							fontSize: textConfigurations.table.fontSize,
@@ -97,14 +138,15 @@ export default function PlaceCard({
 				>
 					{table?.replaceAll("^", "\n")}
 				</Text>
-			</View>
+			</View> */}
 		</View>
 	);
 }
 const styles = StyleSheet.create({
-	placeCard: {
-		width: config.placeCardWidth,
-		height: config.placeCardHeight,
+	textArea: {
+		justifyContent: "center",
+		position: "absolute",
+		borderColor: "red",
 	},
 	nameArea: {
 		justifyContent: "center",
