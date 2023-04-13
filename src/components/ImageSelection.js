@@ -9,6 +9,7 @@ const options = [
 	{ label: "Gold Rectangle", value: "gold-rectangle.png" },
 	{ label: "Golf", value: "golf.png" },
 	{ label: "Grapes", value: "grapes.png" },
+	{ label: "Palm Tree", value: "palm-tree.png" },
 	{ label: "Pink Brush Stroke", value: "pink-brush-stroke.png" },
 	{ label: "Olive Branch", value: "olive_branch.png" },
 	{ label: "Oval", value: "oval.png" },
