@@ -1,11 +1,16 @@
 import placeCardLayout from "../configurations/page-placecards.json";
 import leatherLayout from "../configurations/page-leather.json";
+import leatherPCSmallLayout from "../configurations/page-leather-placecard-small.json";
 
 export const getLayout = (type) => {
-	if (type === "leather") {
-		return leatherLayout;
+	switch (type) {
+		case "leather":
+			return leatherLayout;
+		case "leather-placecard-small":
+			return leatherPCSmallLayout;
+		default:
+			return placeCardLayout;
 	}
-	return placeCardLayout;
 };
 
 export const getNumberOfItemsPerPage = (layoutConfig) => {

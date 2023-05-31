@@ -4,8 +4,11 @@ import { Select, Row, Col } from "antd";
 
 const options = [
 	{ label: "Blank", value: "blank.png" },
+	{ label: "Box", value: "box.png" },
 	{ label: "Brackets 2", value: "brackets2.png" },
+	{ label: "Champagne", value: "champagne.png" },
 	{ label: "Circle", value: "circle.png" },
+	{ label: "Colorful Leaves", value: "colored-branches.png" },
 	{ label: "Gold Rectangle", value: "gold-rectangle.png" },
 	{ label: "Golf", value: "golf.png" },
 	{ label: "Grapes", value: "grapes.png" },
