@@ -31,7 +31,7 @@ export default function Preview({
 		) {
 			cards.push(
 				<PlaceCard
-					key={i}
+					key={`${i}-${data[i] && data[i].name}`}
 					data={data[i]}
 					showPlaceCardBorder={showPlaceCardBorder}
 					backgroundImageName={backgroundImage}

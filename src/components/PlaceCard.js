@@ -11,6 +11,7 @@ export default function PlaceCard({
 	layoutConfig,
 }) {
 	const [backgroundImage, setBackgroundImage] = useState();
+	const [mealIcon, setMealIcon] = useState();
 
 	registerFonts();
 
@@ -25,9 +26,23 @@ export default function PlaceCard({
 				console.log(err);
 			}
 		};
-
 		fetchImage();
 	}, [backgroundImageName]);
+
+	useEffect(() => {
+		if (data && data.hasOwnProperty("meal") && data.meal !== undefined) {
+			const { meal } = data;
+			const fetchIcon = async () => {
+				try {
+					const response = await import(`../images/${meal}.png`);
+					setMealIcon(response.default);
+				} catch (err) {
+					console.log(err);
+				}
+			};
+			fetchIcon();
+		}
+	}, [data]);
 
 	const getPositionStyle = (type) => {
 		let top =
@@ -65,6 +80,8 @@ export default function PlaceCard({
 			{backgroundImage && (
 				<Image src={backgroundImage} style={styles.image} />
 			)}
+
+			{mealIcon && <Image src={mealIcon} style={styles.mealIcon} />}
 
 			{layoutConfig?.textVariables.map((textVariable) => {
 				const textValue = data ? data[textVariable.name] : "";
@@ -172,5 +189,12 @@ const styles = StyleSheet.create({
 	image: {
 		// borderWidth: 1,
 		// borderColor: "red",
+	},
+	mealIcon: {
+		position: "absolute",
+		top: 110,
+		left: 215,
+		width: 20,
+		height: 20,
 	},
 });
