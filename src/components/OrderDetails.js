@@ -46,7 +46,7 @@ function OrderDetails() {
 				};
 			})
 			.sort((a, b) => b.name.length - a.name.length);
-		setFormattedList(nameArray);
+		setFormattedList([...nameArray]);
 		// setOriginalNames(nameArray);
 	}, [importedNames]);
 

@@ -11,6 +11,8 @@ export default function PlaceCard({
 	layoutConfig,
 }) {
 	const [backgroundImage, setBackgroundImage] = useState();
+	const [mealIcon, setMealIcon] = useState();
+	// const [starIcon, setStarIcon] = useState();
 
 	registerFonts();
 
@@ -25,9 +27,35 @@ export default function PlaceCard({
 				console.log(err);
 			}
 		};
-
 		fetchImage();
 	}, [backgroundImageName]);
+
+	useEffect(() => {
+		if (data && data.hasOwnProperty("meal") && data.meal !== undefined) {
+			const { meal } = data;
+			const fetchIcon = async () => {
+				try {
+					const response = await import(`../images/${meal}.png`);
+					setMealIcon(response.default);
+				} catch (err) {
+					console.log(err);
+				}
+			};
+			fetchIcon();
+		}
+	}, [data]);
+
+	// useEffect(() => {
+	// 	const fetchStarIcon = async () => {
+	// 		try {
+	// 			const response = await import(`../images/star.png`);
+	// 			setStarIcon(response.default);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
+	// 	fetchStarIcon();
+	// }, []);
 
 	const getPositionStyle = (type) => {
 		let top =
@@ -66,6 +94,10 @@ export default function PlaceCard({
 				<Image src={backgroundImage} style={styles.image} />
 			)}
 
+			{mealIcon && <Image src={mealIcon} style={styles.mealIcon} />}
+			{/* 
+			{starIcon && <Image src={starIcon} style={styles.starIcon} />} */}
+
 			{layoutConfig?.textVariables.map((textVariable) => {
 				const textValue = data ? data[textVariable.name] : "";
 
@@ -97,7 +129,7 @@ export default function PlaceCard({
 												textVariable.name
 											].textAlign,
 										width: "100%",
-										lineHeight: ".6",
+										lineHeight: "1",
 										borderColor: "blue",
 									},
 								]}
@@ -147,6 +179,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		position: "absolute",
 		borderColor: "red",
+		// color: "#757A5D",
 	},
 	nameArea: {
 		justifyContent: "center",
@@ -172,5 +205,19 @@ const styles = StyleSheet.create({
 	image: {
 		// borderWidth: 1,
 		// borderColor: "red",
+	},
+	mealIcon: {
+		position: "absolute",
+		top: 10,
+		left: 220,
+		width: 20,
+		height: 20,
+	},
+	starIcon: {
+		position: "absolute",
+		top: 109,
+		left: 193,
+		width: 20,
+		height: 20,
 	},
 });
