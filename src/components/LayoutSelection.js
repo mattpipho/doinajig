@@ -7,6 +7,7 @@ const options = [
 	{ label: "Place Cards", value: "placecards" },
 	{ label: "Leather", value: "leather" },
 	{ label: "Leather - PC - (3.5x1.75)", value: "leather-placecard-small" },
+	{ label: "Leather - PC - (3.5x1.8511)", value: "leather-c8" },
 ];
 
 export default function LayoutSelection({ setLayout }) {

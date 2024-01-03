@@ -12,7 +12,7 @@ export default function PlaceCard({
 }) {
 	const [backgroundImage, setBackgroundImage] = useState();
 	const [mealIcon, setMealIcon] = useState();
-	const [starIcon, setStarIcon] = useState();
+	// const [starIcon, setStarIcon] = useState();
 
 	registerFonts();
 
@@ -45,17 +45,17 @@ export default function PlaceCard({
 		}
 	}, [data]);
 
-	useEffect(() => {
-		const fetchStarIcon = async () => {
-			try {
-				const response = await import(`../images/star.png`);
-				setStarIcon(response.default);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		fetchStarIcon();
-	}, []);
+	// useEffect(() => {
+	// 	const fetchStarIcon = async () => {
+	// 		try {
+	// 			const response = await import(`../images/star.png`);
+	// 			setStarIcon(response.default);
+	// 		} catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	};
+	// 	fetchStarIcon();
+	// }, []);
 
 	const getPositionStyle = (type) => {
 		let top =
@@ -95,8 +95,8 @@ export default function PlaceCard({
 			)}
 
 			{mealIcon && <Image src={mealIcon} style={styles.mealIcon} />}
-
-			{starIcon && <Image src={starIcon} style={styles.starIcon} />}
+			{/* 
+			{starIcon && <Image src={starIcon} style={styles.starIcon} />} */}
 
 			{layoutConfig?.textVariables.map((textVariable) => {
 				const textValue = data ? data[textVariable.name] : "";
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		position: "absolute",
 		borderColor: "red",
+		// color: "#757A5D",
 	},
 	nameArea: {
 		justifyContent: "center",
@@ -207,8 +208,8 @@ const styles = StyleSheet.create({
 	},
 	mealIcon: {
 		position: "absolute",
-		top: 110,
-		left: 215,
+		top: 10,
+		left: 220,
 		width: 20,
 		height: 20,
 	},

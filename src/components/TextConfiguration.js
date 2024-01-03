@@ -7,6 +7,7 @@ const TextConfiguration = ({
 	updateTextConfiguration,
 }) => {
 	const fontOptions = [
+		{ label: "Alexander Lettering", value: "AlexanderLettering" },
 		{ label: "Alexandria", value: "Alexandria" },
 		{ label: "Apashy", value: "Apashy" },
 		{ label: "Bender", value: "Bender" },

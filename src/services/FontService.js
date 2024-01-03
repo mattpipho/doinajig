@@ -1,5 +1,6 @@
 import { Font } from "@react-pdf/renderer";
 
+import AlexanderLettering from "../fonts/AlexanderLettering.ttf";
 import Alexandria from "../fonts/Alexandria.ttf";
 import Apashy from "../fonts/Apashy.ttf";
 import Bender from "../fonts/Bender.ttf";
@@ -22,6 +23,10 @@ import Times from "../fonts/times.ttf";
 import TrajanPro from "../fonts/TrajanProRegular.ttf";
 
 export const registerFonts = () => {
+	Font.register({
+		family: "AlexanderLettering",
+		src: AlexanderLettering,
+	});
 	Font.register({
 		family: "Alexandria",
 		src: Alexandria,

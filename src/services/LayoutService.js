@@ -1,6 +1,7 @@
 import placeCardLayout from "../configurations/page-placecards.json";
 import leatherLayout from "../configurations/page-leather.json";
 import leatherPCSmallLayout from "../configurations/page-leather-placecard-small.json";
+import leatherPCC8 from "../configurations/page-leather-3.5x1.8511.json";
 
 export const getLayout = (type) => {
 	switch (type) {
@@ -8,6 +9,8 @@ export const getLayout = (type) => {
 			return leatherLayout;
 		case "leather-placecard-small":
 			return leatherPCSmallLayout;
+		case "leather-c8":
+			return leatherPCC8;
 		default:
 			return placeCardLayout;
 	}
