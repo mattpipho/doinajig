@@ -20,7 +20,10 @@ export default function PlaceCard({
 		const fetchImage = async () => {
 			try {
 				const response = await import(
-					`../designs/${backgroundImageName}`
+					`../designs/${backgroundImageName.replace(
+						/\.[^/.]+$/,
+						""
+					)}.png`
 				);
 				setBackgroundImage(response.default);
 			} catch (err) {
