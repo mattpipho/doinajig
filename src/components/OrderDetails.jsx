@@ -89,9 +89,9 @@ function OrderDetails() {
 
 	return (
 		<Layout>
-			<Header>
-				<div>Menu Here</div>
-			</Header>
+			{/* <Header>
+				<div>Doin-a-Jig</div>
+			</Header> */}
 			<Content>
 				<h1>Order Details</h1>
 				<Row gutter={16}>
@@ -187,7 +187,7 @@ function OrderDetails() {
 				</Row>
 				<Modal
 					title="Place Card Names"
-					visible={isNameImportVisible}
+					open={isNameImportVisible}
 					onOk={formatNames}
 					onCancel={() => {
 						setModalText("");
