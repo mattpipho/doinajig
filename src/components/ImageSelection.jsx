@@ -20,6 +20,7 @@ const options = [
 	{ label: "Oval", value: "oval.png" },
 	{ label: "Red Wine", value: "red-wine.png" },
 	{ label: "Swirl Bottle and Glass", value: "swirl-bottle-and-glass.png" },
+	{ label: "Swirl Glass", value: "swirl-glass.png" },
 	{ label: "Swirl Heart", value: "swirl-heart.png" },
 	{ label: "White Wine", value: "white-wine.png" },
 	{ label: "zBusiness Card", value: "business-card.png" },
