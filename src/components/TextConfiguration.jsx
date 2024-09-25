@@ -9,7 +9,9 @@ const TextConfiguration = ({
 	const fontOptions = [
 		{ label: "Alexander Lettering", value: "AlexanderLettering" },
 		{ label: "Alexandria", value: "Alexandria" },
+		{ label: "Angelline", value: "Angelline" },
 		{ label: "Apashy", value: "Apashy" },
+		{ label: "BeautifullyDeliciousScript", value: "BeautifullyDeliciousScript" },
 		{ label: "Bender", value: "Bender" },
 		{ label: "Bickham Script", value: "BickhamScript" },
 		{ label: "Champagne Limousines", value: "ChampagneLimousines" },

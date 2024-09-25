@@ -2,7 +2,9 @@ import { Font } from "@react-pdf/renderer";
 
 import AlexanderLettering from "../fonts/AlexanderLettering.ttf";
 import Alexandria from "../fonts/Alexandria.ttf";
+import Angelline from "../fonts/Angelline.ttf";
 import Apashy from "../fonts/Apashy.ttf";
+import BeautifullyDeliciousScript from '../fonts/BeautifullyDeliciousScript.otf';
 import Bender from "../fonts/Bender.ttf";
 import BickhamScript from "../fonts/BickhamScript.otf";
 import Champagne from "../fonts/ChampagneLimousines.ttf";
@@ -32,9 +34,17 @@ export const registerFonts = () => {
 		src: Alexandria,
 	});
 	Font.register({
+		family: "Angelline",
+		src: Angelline,
+	});
+	Font.register({
 		family: "Apashy",
 		src: Apashy,
 	});
+	Font.register({
+		family: "BeautifullyDeliciousScript",
+		src: BeautifullyDeliciousScript,
+	})
 	Font.register({
 		family: "Bender",
 		src: Bender,

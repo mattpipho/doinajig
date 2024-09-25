@@ -81,6 +81,7 @@ export default function PlaceCard({
 			width,
 			height,
 			borderWidth: textConfigurations[type].borderWidth,
+			// justifyContent: 'flex-start'
 		};
 	};
 

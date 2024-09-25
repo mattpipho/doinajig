@@ -10,6 +10,7 @@ const options = [
 	{ label: "Circle", value: "circle.png" },
 	{ label: "Colorful Leaves", value: "colored-branches.png" },
 	{ label: "Gold Rectangle", value: "gold-rectangle.png" },
+	{ label: "Dark Purple", value: "dark-purple.png" },
 	{ label: "Golf", value: "golf.png" },
 	{ label: "Grapes", value: "grapes.png" },
 	{ label: "Leather C8", value: "leather-c8.png" },
